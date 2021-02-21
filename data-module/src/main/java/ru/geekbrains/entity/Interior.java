@@ -29,6 +29,11 @@ public class Interior implements Component {
     )
 
     private List<Exterior> exteriors;
+    private List <Picture> pictureList;
+
+    public List<Picture> getPictureList() {
+        return pictureList;
+    }
 
     public Interior(Long id, String panel, String seatMaterial, String seatColor) {
         this.id = id;

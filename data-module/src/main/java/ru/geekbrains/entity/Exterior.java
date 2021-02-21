@@ -120,6 +120,15 @@ public class Exterior  implements Component{
 
 )
     private List<Interior> interiors;
+    private List <Picture> pictureList;
+
+    public List<Picture> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<Picture> pictureList) {
+        this.pictureList = pictureList;
+    }
 
     @Override
     public void show() {
