@@ -8,7 +8,8 @@ import java.util.Map;
 
 public class ExteriorDao {
     private final Map<Long, Exterior> identityMap = new HashMap<>();
-     private ExteriorService exteriorService;
+    private ExteriorService exteriorService;
+
     public Exterior findById(Long myId) throws SQLException {
 
         Exterior exterior = identityMap.get(myId);
@@ -16,10 +17,10 @@ public class ExteriorDao {
 
             exterior = exteriorService.findById2(myId);
 
-            }
-            if (exterior != null) {
-                identityMap.put(myId, exterior);
-            }
+        }
+        if (exterior != null) {
+            identityMap.put(myId, exterior);
+        }
 
         return exterior;
     }
@@ -29,7 +30,7 @@ public class ExteriorDao {
         identityMap.remove(exterior.getId());
 
         //save to DB
-      exteriorService.save(exterior);
+        exteriorService.save(exterior);
 
         identityMap.remove(exterior.getId());
 

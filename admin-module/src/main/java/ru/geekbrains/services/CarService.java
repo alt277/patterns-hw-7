@@ -18,18 +18,18 @@ public class CarService {
 
     public Optional<Car> findById(Long id){
         return carRepository.findById(id);
-    };
+    }
 
     public Car findById2(long id) {
         return carRepository.findById2(id);
-    };
+    }
 
     public void deleteById(Long id) {
         carRepository.deleteById(id);
-    };
+    }
 
     public void save(Car car) throws IOException {
         carRepository.save(car);
-    };
+    }
 
 }

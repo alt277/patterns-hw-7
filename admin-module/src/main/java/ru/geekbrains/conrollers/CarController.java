@@ -52,7 +52,7 @@ public class CarController {
     }
 
     @PostMapping("/restore_conf/{id}")
-    public String restereCar(@PathVariable Long id, Model model, Car car) throws IOException {
+    public String restoreCar(@PathVariable Long id, Model model, Car car) throws IOException {
         model.addAttribute("car", car);
         CarMemento carMemento = carMementoService.findById2(id);
         car.restoreConfiguration(carMemento);

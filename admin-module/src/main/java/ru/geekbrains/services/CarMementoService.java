@@ -18,12 +18,12 @@ public class CarMementoService {
 
     public Optional<CarMemento> findById(Long id) {
         return carMementoRepo.findById(id);
-    };
+    }
     public CarMemento findById2(Long id) { return  carMementoRepo.findById2(id); }
 
     public void deleteById(Long id) {
         carMementoRepo.deleteById(id);
-    };
+    }
 
     public void save(CarMemento carMemento) throws IOException {
         carMementoRepo.save(carMemento);
