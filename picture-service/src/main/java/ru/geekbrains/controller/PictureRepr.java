@@ -1,6 +1,6 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.persist.model.Picture;
+import ru.geekbrains.entity.Picture;
 
 import java.io.Serializable;
 
