@@ -85,4 +85,17 @@ private Long interiorId;
         interiorId = snapshot.getInteriorId();
         exteriorId = snapshot.getExteriorId();
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", brand='" + brand + '\'' +
+                ", engine=" + engine +
+                ", horsePower=" + horsePower +
+                ", exteriorId=" + exteriorId +
+                ", interiorId=" + interiorId +
+                '}';
+    }
 }
