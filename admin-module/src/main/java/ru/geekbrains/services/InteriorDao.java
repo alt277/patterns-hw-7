@@ -1,25 +1,27 @@
 package ru.geekbrains.services;
 
+import lombok.RequiredArgsConstructor;
 import ru.geekbrains.entity.Interior;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
+@RequiredArgsConstructor
 public class InteriorDao {
     private final Map<Long, Interior> identityMap = new HashMap<>();
-     private InteriorService interiorService;
+    private InteriorService interiorService;
+
     public Interior findById(Long myId) throws SQLException {
 
         Interior interior = identityMap.get(myId);
         if (interior == null) {
 
-            interior = interiorService.findById2(myId);
+            interior = interiorService.findById(myId);
 
-            }
-            if (interior != null) {
-                identityMap.put(myId, interior);
-            }
+        }
+        if (interior != null) {
+            identityMap.put(myId, interior);
+        }
 
         return interior;
     }
@@ -29,7 +31,7 @@ public class InteriorDao {
         identityMap.remove(interior.getId());
 
         //save to DB
-      interiorService.save(interior);
+        interiorService.save(interior);
 
         identityMap.remove(interior.getId());
 

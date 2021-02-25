@@ -1,9 +1,10 @@
 package ru.geekbrains.controller;
 
 import ru.geekbrains.entity.Picture;
-
 import java.io.Serializable;
+import lombok.Data;
 
+@Data
 public class PictureRepr implements Serializable {
 
     private Long id;
@@ -18,27 +19,5 @@ public class PictureRepr implements Serializable {
         this.contentType = picture.getContentType();
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
 }

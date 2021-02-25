@@ -1,11 +1,13 @@
 package ru.geekbrains.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "exterior")
-
 public class Exterior  implements Component{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,71 +48,6 @@ public class Exterior  implements Component{
         this.grillDesign = grillDesign;
         this.interiors = interiors;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public boolean isChromMoldings() {
-        return chromMoldings;
-    }
-
-    public void setChromMoldings(boolean chromMoldings) {
-        this.chromMoldings = chromMoldings;
-    }
-
-    public boolean isTintedWindows() {
-        return tintedWindows;
-    }
-
-    public void setTintedWindows(boolean tintedWindows) {
-        this.tintedWindows = tintedWindows;
-    }
-
-    public String getWheelDesign() {
-        return wheelDesign;
-    }
-
-    public void setWheelDesign(String wheelDesign) {
-        this.wheelDesign = wheelDesign;
-    }
-
-    public double getWheelSize() {
-        return wheelSize;
-    }
-
-    public void setWheelSize(double wheelSize) {
-        this.wheelSize = wheelSize;
-    }
-
-    public String getGrillDesign() {
-        return grillDesign;
-    }
-
-    public void setGrillDesign(String grillDesign) {
-        this.grillDesign = grillDesign;
-    }
-
-    public List<Interior> getInteriors() {
-        return interiors;
-    }
-
-    public void setInteriors(List<Interior> interiors) {
-        this.interiors = interiors;
-    }
-
 
     @ManyToMany
     @JoinTable(

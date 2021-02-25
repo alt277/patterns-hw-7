@@ -1,5 +1,6 @@
 package ru.geekbrains.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.entity.Car;
 import ru.geekbrains.repository.CarRepository;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class CarService {
     CarRepository carRepository;
@@ -20,8 +22,8 @@ public class CarService {
         return carRepository.findById(id);
     }
 
-    public Car findById2(long id) {
-        return carRepository.findById2(id);
+    public Car findCarById(long id) {
+        return carRepository.findCarById(id);
     }
 
     public void deleteById(Long id) {

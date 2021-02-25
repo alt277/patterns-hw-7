@@ -1,7 +1,8 @@
 package ru.geekbrains.entity;
 
 import javax.persistence.*;
-
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "pictures")
 public class Picture {
@@ -38,43 +39,5 @@ public class Picture {
         this.exterior = exterior;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public PictureData getPictureData() {
-        return pictureData;
-    }
-
-    public void setPictureData(PictureData pictureData) {
-        this.pictureData = pictureData;
-    }
-
-    public Interior getProduct() {
-        return interior;
-    }
-
-    public void setProduct(Interior interior) {
-        this.interior = interior;
-    }
 }

@@ -15,7 +15,7 @@ public class ExteriorDao {
         Exterior exterior = identityMap.get(myId);
         if (exterior == null) {
 
-            exterior = exteriorService.findById2(myId);
+            exterior = exteriorService.findById(myId);
 
         }
         if (exterior != null) {
