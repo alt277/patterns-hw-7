@@ -1,43 +1,53 @@
 package ru.geekbrains.services;
 
-
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.entity.Exterior;
 import ru.geekbrains.entity.Interior;
 import ru.geekbrains.repository.InteriorRepository;
-
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Service
 public class InteriorService {
 
     private InteriorRepository interiorRepository;
+    private final Map<Long, Interior> identityMap = new ConcurrentHashMap<>();
 
-    public InteriorService(InteriorRepository interiorRepository) {
+    public Interior findById(Long myId) throws SQLException {
 
-        this.interiorRepository = interiorRepository;
-    }
-    public Optional<Interior> findById (Long id) {
-        return interiorRepository.findById (id);
-    }
-    public Interior findById2(Long id) {
-        return interiorRepository.findById2 (id);
+        Interior interior = identityMap.get(myId);
+        if (interior == null) {
+
+            interior = interiorRepository.findById(myId);
+        }
+        if (interior != null) {
+            identityMap.put(myId, interior);
+        }
+        return interior;
     }
 
-    public void deleteById(Long id) {
-            interiorRepository.deleteById(id);
-    }
-    public List<Interior> findAll() {
+
+
+    public List<Interior> findAll() throws SQLException {
         return interiorRepository.findAll();
     }
 
-    public void remove(Long id) {
+    public void save(Interior interior) throws SQLException {
+
+        identityMap.remove(interior.getId());
+        //save to DB
+        interiorRepository.save(interior);
+
+    }
+
+    public void remove(Long id) throws SQLException {
         interiorRepository.deleteById(id);
     }
-
-    public Interior save(Interior interior) {
-        return interiorRepository.save(interior);
-    }
-
 
 }

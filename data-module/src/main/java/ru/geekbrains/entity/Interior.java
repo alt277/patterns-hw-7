@@ -1,8 +1,10 @@
 package ru.geekbrains.entity;
 
+import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "interior")  //@Table javax.persistence не HIBERNATE
 
@@ -35,6 +37,9 @@ public class Interior implements Component {
         return pictureList;
     }
 
+    public Interior() {
+    }
+
     public Interior(Long id, String panel, String seatMaterial, String seatColor) {
         this.id = id;
         this.panel = panel;
@@ -50,45 +55,6 @@ public class Interior implements Component {
         this.exteriors = exteriors;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPanel() {
-        return panel;
-    }
-
-    public void setPanel(String panel) {
-        this.panel = panel;
-    }
-
-    public String getSeatMaterial() {
-        return seatMaterial;
-    }
-
-    public void setSeatMaterial(String seatMaterial) {
-        this.seatMaterial = seatMaterial;
-    }
-
-    public String getSeatColor() {
-        return seatColor;
-    }
-
-    public void setSeatColor(String seatColor) {
-        this.seatColor = seatColor;
-    }
-
-    public List<Exterior> getExteriors() {
-        return exteriors;
-    }
-
-    public void setExteriors(List<Exterior> exteriors) {
-        this.exteriors = exteriors;
-    }
 
     @Override
     public void show() {
@@ -96,16 +62,6 @@ public class Interior implements Component {
         System.out.println(this.toString());
     }
 
-    @Override
-    public String toString() {
-        return "Interior{" +
-                "id=" + id +
-                ", panel='" + panel + '\'' +
-                ", seatMaterial='" + seatMaterial + '\'' +
-                ", seatColorl='" + seatColor + '\'' +
-                ", exteriors=" + exteriors +
-                '}';
-    }
 
 
     public static class Builder {

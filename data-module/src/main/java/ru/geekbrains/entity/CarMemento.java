@@ -1,5 +1,8 @@
 package ru.geekbrains.entity;
 
+import lombok.Data;
+
+@Data
 public class CarMemento {
     private String model;
     private String brand;

@@ -2,6 +2,8 @@ package ru.geekbrains.conrollers;
 
 
 import javassist.NotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,24 +15,23 @@ import ru.geekbrains.entity.Car;
 import ru.geekbrains.entity.CarMemento;
 import ru.geekbrains.entity.Exterior;
 import ru.geekbrains.entity.Interior;
-import ru.geekbrains.services.CarMementoService;
-import ru.geekbrains.services.CarService;
-import ru.geekbrains.services.ExteriorDao;
-import ru.geekbrains.services.InteriorDao;
+import ru.geekbrains.services.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Controller
 @RequestMapping("/car")
 public class CarController {
 
     private CarService carService;
-    private InteriorDao interiorDao;
-    private ExteriorDao exteriorDao;
+    private InteriorService interiorService;
+    private ExteriorService exteriorService;
     private CarMemento carMemento;
     private CarMementoService carMementoService;
 
+    @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
     }
@@ -38,7 +39,7 @@ public class CarController {
     @GetMapping("/base")
     public String getBaseConfiguration(
     ) throws NotFoundException {
-        Car car = carService.findById2(1L);
+        Car car = carService.findCarById(1L);
         return "car_page";
     }
 
@@ -67,8 +68,8 @@ public class CarController {
             Model model
     ) throws NotFoundException, SQLException {
         Car car = carService.findById(id).orElseThrow(() -> new NotFoundException("Car with id: " + id + " doesn't exists"));
-        Exterior exterior = exteriorDao.findById(car.getExteriorId());
-        Interior interior = interiorDao.findById(car.getInteriorId());
+        Exterior exterior = exteriorService.findById(car.getExteriorId());
+        Interior interior = interiorService.findById(car.getInteriorId());
         model.addAttribute("car", car);
         model.addAttribute("exterior", exterior);
         model.addAttribute("interior", interior);

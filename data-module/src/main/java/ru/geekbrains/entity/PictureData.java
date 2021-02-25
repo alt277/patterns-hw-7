@@ -1,9 +1,10 @@
 package ru.geekbrains.entity;
 
+import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-
+@Data
 @Entity
 @Table(name = "pictures_data")
 public class PictureData {
@@ -32,27 +33,5 @@ public class PictureData {
         this.fileName = fileName;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 }

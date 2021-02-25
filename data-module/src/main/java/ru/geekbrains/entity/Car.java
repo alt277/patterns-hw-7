@@ -1,11 +1,13 @@
 package ru.geekbrains.entity;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+@Data
 @Entity
 @Table(name = "car")
 public class Car {
@@ -31,29 +33,6 @@ private Long exteriorId;
 @Column (name = "interiorId")
 private Long interiorId;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getExteriorId() {
-        return exteriorId;
-    }
-
-    public void setExteriorId(Long exteriorId) {
-        this.exteriorId = exteriorId;
-    }
-
-    public Long getInteriorId() {
-        return interiorId;
-    }
-
-    public void setInteriorId(Long interiorId) {
-        this.interiorId = interiorId;
-    }
 
     public Car() {
     }
@@ -86,16 +65,5 @@ private Long interiorId;
         exteriorId = snapshot.getExteriorId();
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", brand='" + brand + '\'' +
-                ", engine=" + engine +
-                ", horsePower=" + horsePower +
-                ", exteriorId=" + exteriorId +
-                ", interiorId=" + interiorId +
-                '}';
-    }
+
 }
