@@ -3,6 +3,7 @@ package ru.geekbrains.conrollers;
 
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import ru.geekbrains.services.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Controller
 @RequestMapping("/car")
 public class CarController {
@@ -30,6 +31,7 @@ public class CarController {
     private CarMemento carMemento;
     private CarMementoService carMementoService;
 
+    @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
     }

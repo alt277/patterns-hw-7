@@ -1,6 +1,7 @@
 package ru.geekbrains.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.entity.Car;
 import ru.geekbrains.repository.CarRepository;
@@ -9,9 +10,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+
 @Service
 public class CarService {
+
     CarRepository carRepository;
 
     public List<Car> findAll() {
